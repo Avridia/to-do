@@ -8,7 +8,6 @@ function conectar(){ // esta funcion sirve solo para conectarse a la base de dat
     return postgres({
         host : process.env.DB_HOST,
         database : process.env.DB_NAME,
-        port : "5433",
         user : process.env.DB_USER,
         password : process.env.DB_PASSWORD
     });
