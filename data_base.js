@@ -1,4 +1,4 @@
-// este fichero solo interactua con la base de datos
+// este fichero solo interactua de manera puntal con la base de datos. Es un subsistema que tenemos para conectarnos a la base de datos
 
 import postgres from "postgres";
 import dotenv from "dotenv"; 
@@ -18,7 +18,7 @@ export function leerTareas(){
     return new Promise((fulfill,reject) => { // retornamos una promesa para que la funcion sea asincrona
         const conexion = conectar(); // podemos llamar directamente a la funcion sin constante pero no es practico porque no la podremos cortar al no tener ninguna referencia a ella
 
-        conexion`SELECT * FROM tareas` // lee todas las entradas de colores. Esto retorna una promesa
+        conexion`SELECT * FROM tareas ORDER BY id` // lee todas las entradas de colores. Esto retorna una promesa
         .then( tareas  => { // si llegué hasta aqui significa que ya he conseguido mis colores, sino hubiese entrado por catch
             conexion.end();
             fulfill(tareas);
